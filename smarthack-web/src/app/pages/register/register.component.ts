@@ -25,6 +25,7 @@ export class RegisterComponent {
   });
 
   submit() {
+    console.log(this.form.value);
     if (this.form.invalid) return;
     this.loading.set(true);
     this.error.set('');

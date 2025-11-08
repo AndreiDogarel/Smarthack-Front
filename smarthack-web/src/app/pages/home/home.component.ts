@@ -15,12 +15,26 @@ export class HomeComponent {
   private pid = inject(PLATFORM_ID);
   user = signal<{username:string;role:string}|null>(null);
   private router = inject(Router);
+  private authService = inject(AuthService);
+
+  loggeninUser = this.authService.getUser(); // sau however obții userul
+
+  isStudent(): boolean {
+    console.log('User role:', this.loggeninUser?.role);
+    return this.loggeninUser?.role === 'STUDENT';
+  }
+
+  isProfessor(): boolean {
+    return this.loggeninUser?.role === 'PROFESSOR';
+  }
+
 
   ngOnInit() {
     if (isPlatformBrowser(this.pid) && this.auth.isAuthenticated()) {
-      this.auth.me().subscribe(u => {
-        if (u && u.username) this.user.set({ username: u.username, role: u.role });
-      });
+      const u = this.auth.getUser();
+      if (u && u.username) {
+        this.user.set({ username: u.username, role: u.role });
+      }
     }
   }
 
