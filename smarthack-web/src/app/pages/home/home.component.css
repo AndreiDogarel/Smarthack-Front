@@ -1,2 +1,181 @@
-.wrap{max-width:720px;margin:40px auto;display:flex;flex-direction:column;gap:16px}
-button{padding:10px 14px}
+/* ====== RESETARE GLOBALĂ ====== */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ====== FUNDAL GRADIENT + VIGNETĂ ANIMATĂ ====== */
+:host {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #53209b, #6a2bb8, #7c40d1);
+  overflow: hidden;
+}
+
+:host::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(110, 40, 200, 0.25) 60%,
+    rgba(30, 0, 70, 0.85) 100%
+  );
+  animation: vignettePulse 12s infinite alternate ease-in-out;
+  z-index: 0;
+}
+
+@keyframes vignettePulse {
+  0% { opacity: 0.55; }
+  100% { opacity: 0.8; }
+}
+
+/* ====== CARD HOME ====== */
+.home-wrap {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 24px;
+  border: 1px solid rgba(210, 190, 255, 0.4);
+  box-shadow:
+    0 12px 30px rgba(60, 20, 120, 0.5),
+    0 0 60px rgba(140, 80, 255, 0.3);
+  backdrop-filter: blur(14px);
+  padding: 50px 60px;
+  width: 400px;
+  text-align: center;
+  color: #432e93;
+  animation: fadeIn 1.4s ease-in-out forwards;
+  transform: translateY(10px);
+  opacity: 0;
+}
+
+.home-wrap:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(190, 160, 255, 0.6);
+  box-shadow:
+    0 16px 38px rgba(70, 30, 140, 0.6),
+    0 0 90px rgba(160, 100, 255, 0.35);
+}
+
+/* ====== ANIMAȚII ====== */
+@keyframes fadeIn {
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== TITLU ====== */
+.home-wrap h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #432e93;
+  margin-bottom: 18px;
+  letter-spacing: 0.6px;
+  animation: slideDown 1.3s ease-in-out forwards;
+}
+
+.home-wrap h1::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, #8b66ff, #c3a4ff);
+  border-radius: 2px;
+}
+
+/* ====== INFO TEXT ====== */
+.info p {
+  font-size: 1rem;
+  color: #4c4093;
+  margin-bottom: 30px;
+  animation: fadeIn 1.5s ease-in-out 0.3s forwards;
+  opacity: 0;
+}
+
+/* ====== BUTOANE ====== */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: slideUp 1.3s ease-in-out 0.5s forwards;
+  opacity: 0;
+}
+
+.actions button {
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(90deg, #5c25c4, #8a57ff, #b28cff);
+  background-size: 300% 100%;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 4px 14px rgba(90, 60, 200, 0.5);
+  animation: buttonGlow 6s ease-in-out infinite alternate;
+}
+
+.actions button:hover {
+  background-position: 100% 0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(110, 70, 230, 0.65);
+}
+
+@keyframes buttonGlow {
+  from { box-shadow: 0 0 10px rgba(155, 120, 255, 0.35); }
+  to { box-shadow: 0 0 22px rgba(155, 120, 255, 0.65); }
+}
+
+/* ====== LINK "AFlĂ MAI MULTE" ====== */
+a {
+  display: inline-block;
+  margin-top: 25px;
+  color: #7a5aff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  animation: fadeIn 1.4s ease-in-out 0.8s forwards;
+  opacity: 0;
+}
+
+a:hover {
+  color: #4b2fff;
+  text-shadow: 0 0 6px rgba(107, 79, 255, 0.4);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 480px) {
+  .home-wrap {
+    width: 85%;
+    padding: 35px 25px;
+  }
+
+  .home-wrap h1 {
+    font-size: 1.7rem;
+  }
+
+  .actions button {
+    font-size: 0.95rem;
+  }
+}

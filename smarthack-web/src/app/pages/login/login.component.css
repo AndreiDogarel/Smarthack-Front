@@ -1,4 +1,266 @@
-.wrap{max-width:360px;margin:60px auto;display:flex;flex-direction:column;gap:12px}
-form{display:flex;flex-direction:column;gap:8px}
-input,button{padding:10px;font-size:14px}
-.error{color:#c62828;margin-top:8px}
+/* ====== RESETARE GLOBALĂ ====== */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ====== FUNDAL STATIC, MOV ÎNCHIS ====== */
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #53209b, #6a2bb8, #7c40d1);
+  overflow: hidden;
+}
+
+/* ====== VIGNETĂ ANIMATĂ (PULSARE LENTĂ, EASE-IN-OUT) ====== */
+:host::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(110, 40, 200, 0.25) 60%,
+    rgba(30, 0, 70, 0.85) 100%
+  );
+  z-index: 0;
+  animation: vignettePulse 12s  infinite alternate;
+}
+
+@keyframes vignettePulse {
+  0% {
+    opacity: 0.55;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0) 35%,
+      rgba(110, 40, 200, 0.25) 60%,
+      rgba(30, 0, 70, 0.85) 100%
+    );
+  }
+  25% {
+    opacity: 0.65;
+    background: radial-gradient(
+      circle at 52% 48%,
+      rgba(255, 255, 255, 0) 36%,
+      rgba(140, 60, 240, 0.35) 62%,
+      rgba(20, 0, 50, 0.9) 100%
+    );
+  }
+  75%
+  {
+    opacity: 0.80;
+    background: radial-gradient(
+      circle at 52% 48%,
+      rgba(255, 255, 255, 0) 36%,
+      rgba(140, 60, 240, 0.35) 62%,
+      rgba(20, 0, 50, 0.9) 100%
+    );
+  }
+  100% {
+    opacity: 0.80;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0) 35%,
+      rgba(110, 40, 200, 0.25) 60%,
+      rgba(30, 0, 70, 0.85) 100%
+    );
+  }
+}
+
+/* ====== CARD LOGIN ====== */
+.wrap {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 22px;
+  border: 1px solid rgba(210, 190, 255, 0.4);
+  box-shadow:
+    0 12px 30px rgba(60, 20, 120, 0.5),
+    0 0 60px rgba(140, 80, 255, 0.3);
+  backdrop-filter: blur(14px);
+  padding: 50px 40px;
+  width: 340px;
+  color: #333;
+  animation: fadeIn 1.4s ease-in-out forwards;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.wrap:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 14px 36px rgba(70, 30, 140, 0.6),
+    0 0 80px rgba(160, 100, 255, 0.3);
+  border-color: rgba(190, 160, 255, 0.6);
+  transform: translateY(-3px);
+}
+
+/* ====== ANIMAȚII DE APARIȚIE ====== */
+@keyframes fadeIn {
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== TITLU ====== */
+.wrap h1 {
+  text-align: center;
+  margin-bottom: 28px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #432e93;
+  letter-spacing: 0.6px;
+  animation: slideDown 1.3s ease-in-out 0.2s forwards;
+  opacity: 0;
+}
+
+.wrap h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #8b66ff, #c3a4ff);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* ====== FORMULAR ====== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: slideUp 1.2s ease-in-out 0.4s forwards;
+  opacity: 0;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+  margin-left: 3px;
+}
+
+input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  background: #f8f7ff;
+  color: #53209b;
+  font-size: 0.95rem;
+  transition: all 0.3s ease-in-out;
+}
+
+input:focus {
+  border-color: #a88cff;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(168, 140, 255, 0.55);
+}
+
+/* ====== BUTON LOGIN ====== */
+button {
+  margin-top: 18px;
+  padding: 11px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #5c25c4, #8a57ff, #b28cff);
+  background-size: 300% 100%;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 4px 14px rgba(90, 60, 200, 0.5);
+  animation: buttonGlow 6s ease-in-out infinite alternate;
+}
+
+button:hover {
+  background-position: 100% 0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(110, 70, 230, 0.65);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@keyframes buttonGlow {
+  from { box-shadow: 0 0 10px rgba(155, 120, 255, 0.35); }
+  to { box-shadow: 0 0 22px rgba(155, 120, 255, 0.65); }
+}
+
+/* ====== MESAJ EROARE ====== */
+.error {
+  color: #c44c8a;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 10px;
+  min-height: 18px;
+}
+
+/* ====== LINK REGISTER ====== */
+a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #7a5aff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease-in-out;
+  animation: fadeIn 1.4s ease-in-out 0.8s forwards;
+  opacity: 0;
+  font-weight: 600;
+}
+
+a:hover {
+  color: #4b2fff;
+  text-shadow: 0 0 6px rgba(107, 79, 255, 0.4);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 420px) {
+  .wrap {
+    width: 90%;
+    padding: 30px 25px;
+  }
+
+  .wrap h1 {
+    font-size: 1.7rem;
+  }
+
+  input, button {
+    font-size: 0.9rem;
+  }
+}
+
+/* ====== SUPLIMENTARE STILURI ====== */
+.etichete {
+  color: #432e93;
+  font-size: large;
+  font-weight: bold;
+}
+
+#log {
+  font-size: 250%;
+}
