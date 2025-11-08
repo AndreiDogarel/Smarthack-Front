@@ -1,0 +1,18 @@
+<div class="wrap">
+  <h1>Register</h1>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>Username</label>
+    <input type="text" formControlName="username" />
+    <label>Password</label>
+    <input type="password" formControlName="password" />
+    <label>Role</label>
+    <select formControlName="role">
+      <option value="ADMIN">ADMIN</option>
+      <option value="EMPLOYEE">EMPLOYEE</option>
+      <option value="CUSTOMER">CUSTOMER</option>
+    </select>
+    <button type="submit" [disabled]="loading()">Create account</button>
+    <div class="error" *ngIf="error()">{{ error() }}</div>
+  </form>
+  <a routerLink="/login">Ai cont? Login</a>
+</div>

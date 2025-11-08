@@ -1,0 +1,4 @@
+.wrap{max-width:360px;margin:60px auto;display:flex;flex-direction:column;gap:12px}
+form{display:flex;flex-direction:column;gap:8px}
+input,button{padding:10px;font-size:14px}
+.error{color:#c62828;margin-top:8px}

@@ -1,0 +1,7 @@
+<div class="wrap">
+  <h1>Dashboard</h1>
+  <div *ngIf="user() as u">
+    <p>Bun venit, {{u.username}} ({{u.role}})</p>
+    <button (click)="logout()">Logout</button>
+  </div>
+</div>

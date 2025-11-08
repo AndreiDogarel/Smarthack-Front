@@ -1,0 +1,12 @@
+<div class="wrap">
+  <h1>Login</h1>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>Username</label>
+    <input type="text" formControlName="username" />
+    <label>Password</label>
+    <input type="password" formControlName="password" />
+    <button type="submit" [disabled]="loading()">Login</button>
+    <div class="error" *ngIf="error()">{{ error() }}</div>
+  </form>
+  <a routerLink="/register">Nu ai cont? Register</a>
+</div>
