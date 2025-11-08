@@ -1,24 +1,12 @@
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
-
 # Node dependencies
-/node_modules
+node_modules/
 
-# IDE settings
-.vscode/
-.idea/
-*.sublime-workspace
-*.sublime-project
-
-# Environment files
-src/environments/environment*.ts
-
-# System files
-.DS_Store
-Thumbs.db
+# Build output
+dist/
+tmp/
+out-tsc/
+bazel-out/
+.angular/
 
 # Logs
 npm-debug.log*
@@ -26,21 +14,58 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Coverage reports
-/coverage
+# IDE configs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
 
-# Angular cache
-/.angular
+# System files
+.DS_Store
+Thumbs.db
 
-# Build artifacts
-*.tgz
+# Coverage
+coverage/
 
-# Temporary files
+# Environment configurations (sensitive)
+src/environments/environment*.ts
+
+# Misc / temporary
 *.tmp
 *.temp
-*.log
 *.bak
+*.log
+*.swp
+*.tgz
 
-# Misc
-package-lock.json
-angular.json
+# Package manager files (optional to ignore)
+# Uncomment these only if you don't want to commit lockfiles
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Optional local build config files
+/.firebase/
+.firebase/
+functions/node_modules/
+
+# Ignore generated TypeScript typings (if any)
+*.d.ts
+
+# Ignore local environment overrides
+.env
+.env.local
+.env.*.local
+
+# Optional: ignore Angular cache
+.angular/cache/
+
+# Optional: ignore test artifacts
+test-results/
+reports/
+
+# Optional: ignore local browser storage for devtools
+chrome-user-data/
+
+# Ignore Windows shortcuts
+*.lnk
