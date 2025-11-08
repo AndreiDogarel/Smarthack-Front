@@ -10,5 +10,6 @@ export const appRoutes: Routes = [
   { path: 'register', loadComponent: () => import('./pages/register/register.component').then(m => m.RegisterComponent), canMatch: [canMatchPublic] },
   { path: 'quiz', component: QuizComponent },
   {path: 'professor-dashboard', component: ProfesorQuiz},
+  { path: 'about_app',  loadComponent: () => import('./pages/about_app/about.component').then(m => m.AboutComponent)},
   { path: '**', redirectTo: '' },
 ];

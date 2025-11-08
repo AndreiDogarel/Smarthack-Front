@@ -1,0 +1,73 @@
+.about-wrap {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 30px 40px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #cbadf4, #6a2bb8, #7c40d1);
+  color: #ffffff;
+  font-family: 'Nunito', sans-serif;
+  box-shadow: 0 12px 30px rgba(60, 20, 120, 0.5);
+  text-align: center;
+}
+
+.about-wrap h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 6px rgba(213, 173, 250, 0.3);
+  animation: fadeDown 1s ease forwards;
+}
+
+.about-wrap p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color:#ffffff;
+  margin-bottom: 15px;
+  animation: fadeUp 1s ease forwards;
+}
+
+.about-wrap button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(90deg, #5c25c4, #8a57ff, #b28cff);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(90,60,200,0.5);
+}
+
+.about-wrap button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(110,70,230,0.6);
+}
+
+/* ====== ANIMAȚII ====== */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 500px) {
+  .about-wrap {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .about-wrap h1 {
+    font-size: 1.8rem;
+  }
+
+  .about-wrap p {
+    font-size: 1rem;
+  }
+}

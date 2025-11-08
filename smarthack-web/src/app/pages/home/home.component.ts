@@ -50,7 +50,11 @@ export class HomeComponent {
     this.router.navigate(['/quiz']);
     }
   }
-  
+
+   openAbout() {
+    this.router.navigate(['/about_app']); // navighează către AboutComponent
+  }
+
   // goToSomething() {
   //   this.router.navigate(['/idk']);
   // }

@@ -23,8 +23,9 @@
     <button (click)="goToQuiz()">🎯 Începe un Quiz</button>
     <button (click)="logout()">🚪 Logout</button>
   </div>
+ <a (click)="openAbout()" style="cursor:pointer;">Află mai multe despre aplicație</a>
 
-  <a routerLink="/about">Află mai multe despre aplicație</a>
+
 </div>
 
 <div class="home-wrap" *ngIf="isProfessor()">
