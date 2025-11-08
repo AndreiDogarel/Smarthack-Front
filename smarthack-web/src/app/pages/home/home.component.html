@@ -1,13 +1,14 @@
-<div class="wrap">
-  <h1>Dashboard</h1>
+<div class="home-wrap">
+  <h1>Bun venit în aplicație!</h1>
 
-  <div class="ribbon">
-    <button class="ribbon-btn" (click)="goToQuiz()">🎯 Take Quiz</button>
-    <!-- <button class="ribbon-btn" (click)="goToSomething()">🚀 Go to IDK</button> -->
+  <div class="info">
+    <p>Explorează, învață și distrează-te cu quiz-urile noastre interactive!</p>
   </div>
 
-  <div *ngIf="user() as u">
-    <p>Bun venit, {{u.username}} ({{u.role}})</p>
-    <button (click)="logout()">Logout</button>
+  <div class="actions">
+    <button (click)="goToQuiz()">🎯 Începe un Quiz</button>
+    <button (click)="logout()">🚪 Logout</button>
   </div>
+
+  <a routerLink="/about">Află mai multe despre aplicație</a>
 </div>
