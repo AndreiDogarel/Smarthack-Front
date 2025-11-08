@@ -1,0 +1,67 @@
+<!-- <div class="quiz-container" *ngIf="question; else loading">
+  <h2>{{ question.question }}</h2>
+
+  <div class="options">
+    <button
+      *ngFor="let option of [question.variantA, question.variantB, question.variantC, question.variantD]"
+      class="option-btn"
+      [ngClass]="{ selected: selectedAnswer === option }"
+      (click)="selectAnswer(option)"
+    >
+      {{ option }}
+    </button>
+  </div>
+
+  <button class="check" (click)="checkAnswer()">Verifică răspunsul</button>
+
+  <div *ngIf="result" class="result">{{ result }}</div>
+
+  <button *ngIf="result" class="next" (click)="nextQuestion()">Următoarea întrebare</button>
+</div>
+
+<ng-template #loading>
+  <p>Se încarcă întrebarea...</p>
+</ng-template>
+   -->
+
+   <div class="quiz-wrapper">
+    <!-- Selectare domeniu -->
+    <div class="domain-select">
+      <label for="domain">Alege domeniul:</label>
+      <select id="domain" [(ngModel)]="selectedDomain">
+        <option value="" disabled selected>Selectează un domeniu</option>
+        <option *ngFor="let domain of domains" [value]="domain">
+          {{ domain }}
+        </option>
+      </select>
+  
+      <button (click)="loadQuestions()">Încarcă întrebările</button>
+    </div>
+  
+    <!-- Afișare întrebare -->
+    <div class="quiz-container" *ngIf="question; else loading">
+      <h2>{{ question.question }}</h2>
+  
+      <div class="options">
+        <button
+          *ngFor="let option of [question.variantA, question.variantB, question.variantC, question.variantD]"
+          class="option-btn"
+          [ngClass]="{ selected: selectedAnswer === option }"
+          (click)="selectAnswer(option)"
+        >
+          {{ option }}
+        </button>
+      </div>
+  
+      <button class="check" (click)="checkAnswer()">Verifică răspunsul</button>
+  
+      <div *ngIf="result" class="result">{{ result }}</div>
+  
+      <button *ngIf="result" class="next" (click)="nextQuestion()">Următoarea întrebare</button>
+    </div>
+  
+    <ng-template #loading>
+      <p>Se încarcă întrebarea...</p>
+    </ng-template>
+  </div>
+  

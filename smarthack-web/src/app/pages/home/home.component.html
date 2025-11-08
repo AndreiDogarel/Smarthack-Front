@@ -1,5 +1,11 @@
 <div class="wrap">
   <h1>Dashboard</h1>
+
+  <div class="ribbon">
+    <button class="ribbon-btn" (click)="goToQuiz()">🎯 Take Quiz</button>
+    <!-- <button class="ribbon-btn" (click)="goToSomething()">🚀 Go to IDK</button> -->
+  </div>
+
   <div *ngIf="user() as u">
     <p>Bun venit, {{u.username}} ({{u.role}})</p>
     <button (click)="logout()">Logout</button>

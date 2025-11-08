@@ -6,6 +6,7 @@ import { authInterceptor } from './core/auth.interceptor';
 import { provideClientHydration } from '@angular/platform-browser';
 import { AuthService } from './core/auth.service';
 
+
 function initAuthFactory() {
   return () => { inject(AuthService).init(); };
 }
