@@ -8,8 +8,8 @@
     <label>Role</label>
     <select formControlName="role">
       <option value="ADMIN">ADMIN</option>
-      <option value="EMPLOYEE">EMPLOYEE</option>
-      <option value="CUSTOMER">CUSTOMER</option>
+      <option value="STUDENT">STUDENT</option>
+      <option value="PROFESOR">PROFESOR</option>
     </select>
     <button type="submit" [disabled]="loading()">Create account</button>
     <div class="error" *ngIf="error()">{{ error() }}</div>
