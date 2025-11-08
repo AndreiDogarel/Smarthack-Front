@@ -1,10 +1,10 @@
 <div class="wrap">
-  <h1>Login</h1>
+  <h1 id="log">Login</h1>
   <form [formGroup]="form" (ngSubmit)="submit()">
-    <label>Username</label>
-    <input type="text" formControlName="username" />
-    <label>Password</label>
-    <input type="password" formControlName="password" />
+    <label class="etichete">Username</label>
+    <input type="text" formControlName="username" placeholder="Introdu username-ul"/>
+    <label class="etichete">Password</label>
+    <input type="password" formControlName="password" placeholder="Introdu parola"/>
     <button type="submit" [disabled]="loading()">Login</button>
     <div class="error" *ngIf="error()">{{ error() }}</div>
   </form>
