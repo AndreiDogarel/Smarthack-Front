@@ -25,7 +25,7 @@ export class HomeComponent {
   }
 
   isProfessor(): boolean {
-    return this.loggeninUser?.role === 'PROFESSOR';
+    return this.loggeninUser?.role === 'PROFESOR';
   }
 
 
@@ -44,7 +44,11 @@ export class HomeComponent {
   }
 
   goToQuiz() {
+    if (this.isProfessor()) {
+      this.router.navigate(['/professor-dashboard']);
+    } else {
     this.router.navigate(['/quiz']);
+    }
   }
   
   // goToSomething() {

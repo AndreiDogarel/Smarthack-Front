@@ -13,6 +13,16 @@ export interface QuestionDto {
   domain: string;
 }
 
+export interface QuestionDtoAdd {
+  question: string;
+  variantA: string;
+  variantB: string;
+  variantC: string;
+  variantD: string;
+  correctAnswer: string;
+  domain: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,5 +33,9 @@ export class QuestionService {
 
   getQuestionsByDomain(domain: string): Observable<QuestionDto[]> {
     return this.http.get<QuestionDto[]>(`${this.apiUrl}/getQuestionsByDomain/${domain}`);
+  }
+
+  addQuestion(question: QuestionDtoAdd): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/add`, question);
   }
 }

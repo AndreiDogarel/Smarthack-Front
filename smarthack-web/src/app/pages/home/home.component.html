@@ -1,20 +1,8 @@
-<!-- <div class="wrap">
-  <h1>Dashboard</h1>
-
-  <div class="ribbon">
-    <button class="ribbon-btn" (click)="goToQuiz()">🎯 Take Quiz</button>
-  </div>
-
-  <div class="actions">
-    <button (click)="goToQuiz()">🎯 Începe un Quiz</button>
-    <button (click)="logout()">🚪 Logout</button>
-  </div>
-</div> -->
-
+<!-- 
 <div class="wrap">
   <h1>Dashboard</h1>
 
-  <!-- Dacă e student -->
+
   <div *ngIf="isStudent()">
     <div class="ribbon">
       <button class="ribbon-btn" (click)="goToQuiz()">🎯 Take Quiz</button>
@@ -23,4 +11,33 @@
     <p>Bun venit, {{loggeninUser?.username}} ({{loggeninUser?.role}})</p>
     <button (click)="logout()">Logout</button>
   </div>
+</div> -->
+<div class="home-wrap" *ngIf="isStudent()">
+  <h1>Bun venit în aplicație!</h1>
+
+  <div class="info">
+    <p>Explorează, învață și distrează-te cu quiz-urile noastre interactive!</p>
+  </div>
+
+  <div class="actions">
+    <button (click)="goToQuiz()">🎯 Începe un Quiz</button>
+    <button (click)="logout()">🚪 Logout</button>
+  </div>
+
+  <a routerLink="/about">Află mai multe despre aplicație</a>
+</div>
+
+<div class="home-wrap" *ngIf="isProfessor()">
+  <h1>Bun venit în aplicație!</h1>
+
+  <div class="info">
+    <p>Poti adauga intrebari</p>
+  </div>
+
+  <div class="actions">
+    <button (click)="goToQuiz()">🎯 Adauga intrebari pentru quizuri</button>
+    <button (click)="logout()">🚪 Logout</button>
+  </div>
+
+  <a routerLink="/about">Află mai multe despre aplicație</a>
 </div>

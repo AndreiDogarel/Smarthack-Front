@@ -1,0 +1,51 @@
+<div class="quiz-wrapper">
+    <div class="domain-select">
+      <label for="domain">Alege domeniul:</label>
+      <select id="domain" [(ngModel)]="selectedDomain">
+        <option value="" disabled selected>Selectează un domeniu</option>
+        <option *ngFor="let domain of domains" [value]="domain">
+          {{ domain }}
+        </option>
+      </select>
+      <input
+      type="text"
+      placeholder="Scrie intrebarea aici..."
+      [(ngModel)]="userInput"
+      name="userInput"
+    />
+    <input
+      type="text"
+      placeholder="Scrie varianta A aici..."
+      [(ngModel)]="variantaA"
+      name="variantA"
+    />
+    <input
+      type="text"
+      placeholder="Scrie varianta B aici..."
+      [(ngModel)]="variantaB"
+      name="variantaB"
+    />
+    <input
+      type="text"
+      placeholder="Scrie varianta C aici..."
+      [(ngModel)]="variantaC"
+      name="variantaC"
+    />
+    <input
+      type="text"
+      placeholder="Scrie varianta D aici..."
+      [(ngModel)]="variantaD"
+      name="variantaD"
+    />
+    <input
+      type="text"
+      placeholder="Scrie varianta corecta aici..."
+      [(ngModel)]="variantaCorecta"
+      name="variantaCorecta"
+    />
+  
+      <button (click)="loadQuestions()">Încarcă intrebarea</button>
+    </div>
+  
+  </div>
+  

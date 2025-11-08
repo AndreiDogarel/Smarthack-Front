@@ -71,6 +71,12 @@ import { QuestionService, QuestionDto } from '../../core/question.service';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent {
+  userInput: string = '';
+  variantaA: string = '';
+  variantaB: string = '';
+  variantaC: string = '';
+  variantaD: string = '';
+  variantaCorecta: string = '';
   constructor(private questionService: QuestionService) {}
 
   // 🔹 Domenii disponibile
@@ -161,6 +167,12 @@ export class QuizComponent {
         alert('Ai terminat toate întrebările din acest domeniu 🎉');
       }
     }, 300);
+  }
+  isProfessor(): boolean {
+    return true;
+  }
+  isStudent(): boolean {
+    return false;
   }
 }
 
