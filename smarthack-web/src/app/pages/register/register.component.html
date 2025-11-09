@@ -6,7 +6,7 @@
   <h1 id="log">Register</h1>
 
   <form [formGroup]="form" (ngSubmit)="submit()">
-    <label class="etichete" for="username">Username</label>
+    <label class="etichete" for="username">Nume de Utilizator</label>
     <input
       id="username"
       type="text"
@@ -14,7 +14,7 @@
       placeholder="Introdu username-ul"
     />
 
-    <label class="etichete" for="password">Password</label>
+    <label class="etichete" for="password">Parola</label>
     <input
       id="password"
       type="password"
@@ -22,7 +22,7 @@
       placeholder="Introdu parola"
     />
 
-    <label class="etichete" for="role">Role</label>
+    <label class="etichete" for="role">Ocupatie</label>
     <select id="role" formControlName="role">
       <option value="STUDENT">STUDENT</option>
       <option value="PROFESOR">PROFESOR</option>

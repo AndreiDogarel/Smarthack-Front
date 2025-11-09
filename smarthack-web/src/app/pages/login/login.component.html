@@ -6,10 +6,10 @@
   <h1 id="log">Login</h1>
 
   <form [formGroup]="form" (ngSubmit)="submit()">
-    <label class="etichete">Username</label>
+    <label class="etichete">Nume de Utilizator</label>
     <input type="text" formControlName="username" placeholder="Introdu username-ul"/>
 
-    <label class="etichete">Password</label>
+    <label class="etichete">Parola</label>
     <input type="password" formControlName="password" placeholder="Introdu parola"/>
 
     <button type="submit" [disabled]="loading()">Login</button>
