@@ -1,23 +1,65 @@
-<div class="background-shapes top-shapes">
-  <div></div><div></div><div></div><div></div><div></div>
-</div>
+<div class="upload-page">
+  <section class="panel">
+    <h2>Încarcă un fișier</h2>
 
-<div class="upload-container">
-    <h2>📁 Încarcă un fișier</h2>
-  
-    <input type="file" (change)="onFileSelected($event)" />
-    
-    <button (click)="onUpload()" [disabled]="!selectedFile">🚀 Încarcă</button>
-  
-    <div *ngIf="uploadProgress > 0">
-      <p>Progres: {{ uploadProgress }}%</p>
-      <progress [value]="uploadProgress" max="100"></progress>
+    <label class="file-picker">
+      <input type="file" (change)="onFileSelected($event)" />
+      <span>{{ selectedFile?.name || 'Alege fișier' }}</span>
+    </label>
+
+    <label class="file-picker">
+      <select name="domain" [(ngModel)]="selectedDomain" required>
+        <option [ngValue]="null" disabled>Selectează domeniu</option>
+        <option *ngFor="let d of domains" [ngValue]="d">{{ d }}</option>
+      </select>
+    </label>
+
+    <button class="primary" (click)="onUpload()" [disabled]="!selectedFile || !selectedDomain">Încarcă</button>
+
+    <div class="progress-wrap" *ngIf="uploadProgress > 0">
+      <div class="progress-bar" [style.width.%]="uploadProgress"></div>
+      <span>{{ uploadProgress }}%</span>
     </div>
-  
-    <p class="message">{{ message }}</p>
-    <button class="back-home" (click)="goHome()">🏠 Înapoi la Home</button>
-</div>
 
-<div class="background-shapes bottom-shapes">
-  <div></div><div></div><div></div><div></div><div></div>
+    <p class="message" *ngIf="message">{{ message }}</p>
+    <button class="ghost" (click)="goHome()">Înapoi la Home</button>
+  </section>
+
+  <section class="result" *ngIf="data">
+    <header class="result-header">
+      <div class="meta">
+        <div *ngIf="data.filename">Fișier: {{ data.filename }}</div>
+        <div *ngIf="data.domain">Domeniu: {{ data.domain }}</div>
+        <div *ngIf="data.saved !== undefined">Întrebări salvate: {{ data.saved }}</div>
+      </div>
+      <h3>Rezumat</h3>
+      <article class="summary preline">{{ data.summary }}</article>
+    </header>
+
+    <h3>Quiz</h3>
+    <div class="quiz-list">
+      <div class="quiz-card" *ngFor="let q of data.quizzes">
+        <div class="q-title">
+          <span class="qid">#{{ q.id }}</span>
+          <span class="q-text">{{ q.question }}</span>
+        </div>
+        <ul class="options">
+          <li *ngFor="let opt of q.options; let i = index"
+              (click)="choose(q.id, i)"
+              [class.correct]="isCorrect(q,i)"
+              [class.wrong]="isWrong(q,i)">
+            <input type="radio" [name]="'q'+q.id" [checked]="selected[q.id]===i" />
+            <span class="opt-text">{{ opt }}</span>
+          </li>
+        </ul>
+        <details *ngIf="q.hint" class="hint">
+          <summary>Hint</summary>
+          <div>{{ q.hint }}</div>
+        </details>
+        <div class="answer" *ngIf="selected[q.id] !== undefined">
+          Răspuns corect: {{ q.options[q.answerIndex] }}
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
