@@ -45,6 +45,7 @@ export class HomeComponent {
 
   goToQuiz() {
     if (this.isProfessor()) {
+     
       this.router.navigate(['/professor-dashboard']);
     } else {
     this.router.navigate(['/quiz']);
