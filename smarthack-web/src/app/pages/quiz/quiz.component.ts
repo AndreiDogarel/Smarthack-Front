@@ -82,7 +82,7 @@ export class QuizComponent {
   constructor(private questionService: QuestionService) {}
 
   // 🔹 Domenii disponibile
-  domains: string[] = ['test', 'test2'];
+  domains: string[] = ['Matematică', 'Istorie', 'Geografie', 'Biologie', 'Literatură'];
   selectedDomain: string = '';
 
   // 🔹 Stări interne
