@@ -1,36 +1,14 @@
-/* ====== RESETARE GLOBALĂ ====== */
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  font-family: 'Nunito', sans-serif;
-}
-
-/* ====== FUNDAL ANIMAT ====== */
+/* ====== FUNDAL MOV + VIGNETĂ PULSANTĂ ====== */
 :host {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #53209b, #6a2bb8, #7c40d1);
-  background-size: 200% 200%;
-  animation: bgShift 18s ease-in-out infinite alternate;
   overflow: hidden;
 }
 
-@keyframes bgShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* ====== VIGNETĂ ====== */
 :host::before {
   content: "";
   position: absolute;
@@ -42,19 +20,56 @@ html, body {
     rgba(30, 0, 70, 0.85) 100%
   );
   z-index: 0;
-  animation: vignettePulse 12s ease-in-out infinite;
+  animation: vignettePulse 12s infinite alternate ease-in-out;
 }
 
 @keyframes vignettePulse {
-  0% { opacity: 0.6; }
-  50% { opacity: 0.85; }
-  100% { opacity: 0.6; }
+  0% { opacity: 0.55; }
+  50% { opacity: 0.80; }
+  100% { opacity: 0.65; }
 }
 
-/* ====== CARD ====== */
+/* ====== SHAPES DECORATIVE SUS + JOS ====== */
+.background-shapes {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.top-shapes { top: 0; padding-top: 40px; }
+.bottom-shapes { bottom: 0; padding-bottom: 40px; }
+
+.background-shapes div {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(230, 220, 255, 0.35);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 25px rgba(80, 20, 160, 0.4);
+  animation: floatAnimation 8s infinite ease-in-out;
+  opacity: 0.85;
+}
+
+.background-shapes div:nth-child(2) { width: 80px; height: 80px; animation-delay: 1s; }
+.background-shapes div:nth-child(3) { width: 45px; height: 45px; animation-delay: 2s; }
+.background-shapes div:nth-child(4) { width: 95px; height: 95px; animation-delay: 3s; }
+.background-shapes div:nth-child(5) { width: 55px; height: 55px; animation-delay: 4s; }
+
+@keyframes floatAnimation {
+  0%   { transform: translateY(0px) scale(1); }
+  50%  { transform: translateY(-22px) scale(1.05); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+/* ====== CARD REGISTER ====== */
 .wrap {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   background: rgba(255, 255, 255, 0.93);
   border-radius: 22px;
   border: 1px solid rgba(210, 190, 255, 0.4);
@@ -63,30 +78,37 @@ html, body {
     0 0 60px rgba(140, 80, 255, 0.3);
   backdrop-filter: blur(14px);
   padding: 50px 40px;
-  width: 340px;
-  color: #333;
-  animation: fadeIn 1.4s ease-in-out forwards;
-  transform: translateY(10px);
+  width: 380px;
+  text-align: center;
+  color: #432e93;
   opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 1.4s forwards ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.wrap:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 14px 36px rgba(70, 30, 140, 0.6),
+    0 0 80px rgba(160, 100, 255, 0.3);
+  border-color: rgba(190, 160, 255, 0.6);
+  transform: translateY(-3px);
 }
 
 /* ====== TITLU ====== */
-.wrap h1 {
-  text-align: center;
-  margin-bottom: 28px;
+#log {
   font-family: 'Playfair Display', serif;
-  font-weight: 600;
   font-size: 2rem;
-  color: #432e93;
-  letter-spacing: 0.6px;
-  animation: slideDown 1.3s ease-in-out 0.2s forwards;
+  margin-bottom: 25px;
   opacity: 0;
+  animation: slideDown 1s forwards;
 }
 
-.wrap h1::after {
+#log::after {
   content: "";
   display: block;
-  width: 60px;
+  width: 65px;
   height: 3px;
   background: linear-gradient(90deg, #8b66ff, #c3a4ff);
   margin: 10px auto 0;
@@ -98,37 +120,29 @@ form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  animation: slideUp 1.2s ease-in-out 0.4s forwards;
   opacity: 0;
+  animation: slideUp 1s 0.4s forwards;
 }
 
-@keyframes fadeIn { to { transform: translateY(0); opacity: 1; } }
-@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-
-/* ====== LABEL ====== */
-.etichete {
+label {
+  text-align: left;
+  font-weight: 600;
+  color: #53209b;
   font-size: 0.9rem;
-  font-weight: bold;
-  color: #432e93;
-  margin-left: 3px;
 }
 
-/* ====== INPUT și SELECT ====== */
 input, select {
-  padding: 10px 12px;
+  padding: 12px;
+  background: #f8f7ff;
   border: 1px solid #ccc;
   border-radius: 10px;
-  outline: none;
-  background: #f8f7ff;
-  color: #333;
-  font-size: 0.95rem;
-  transition: all 0.3s ease-in-out;
+  color: #53209b;
+  transition: 0.3s;
 }
 
 input:focus, select:focus {
   border-color: #a88cff;
-  background: #ffffff;
+  background: #fff;
   box-shadow: 0 0 8px rgba(168, 140, 255, 0.55);
 }
 
@@ -139,52 +153,49 @@ button {
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  font-weight: 700;
   background: linear-gradient(90deg, #5c25c4, #8a57ff, #b28cff);
   background-size: 300% 100%;
   color: #fff;
-  font-weight: 700;
-  font-size: 1rem;
-  transition: all 0.4s ease-in-out;
   box-shadow: 0 4px 14px rgba(90, 60, 200, 0.5);
-  animation: buttonGlow 6s ease-in-out infinite alternate;
+  animation: buttonGlow 6s infinite alternate ease-in-out;
+  transition: 0.4s;
 }
 
-button:hover { background-position: 100% 0; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(110, 70, 230, 0.65); }
-button:disabled { opacity: 0.6; cursor: not-allowed; }
+button:hover {
+  background-position: 100% 0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(110, 70, 230, 0.65);
+}
 
-@keyframes buttonGlow { from { box-shadow: 0 0 10px rgba(155, 120, 255, 0.35); } to { box-shadow: 0 0 22px rgba(155, 120, 255, 0.65); } }
-
-/* ====== EROARE ====== */
+/* ====== MESAJ EROARE ====== */
 .error {
   color: #c44c8a;
   font-size: 0.85rem;
-  text-align: center;
-  margin-top: 10px;
   min-height: 18px;
 }
 
 /* ====== LINK LOGIN ====== */
 a {
   display: block;
-  text-align: center;
   margin-top: 20px;
+  font-weight: 600;
   color: #7a5aff;
   text-decoration: none;
-  font-size: 0.9rem;
-  transition: all 0.3s ease-in-out;
-  animation: fadeIn 1.4s ease-in-out 0.8s forwards;
-  opacity: 0;
-  font-weight: 600;
+  transition: 0.3s;
 }
 
-a:hover { color: #4b2fff; text-shadow: 0 0 6px rgba(107, 79, 255, 0.4); }
+a:hover {
+  text-shadow: 0 0 6px rgba(107, 79, 255, 0.4);
+}
+
+/* ====== ANIMAȚII ====== */
+@keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+@keyframes slideDown { from {opacity:0; transform:translateY(-10px);} to {opacity:1; transform:none;} }
+@keyframes slideUp { from {opacity:0; transform:translateY(15px);} to {opacity:1; transform:none;} }
+@keyframes buttonGlow { from { box-shadow: 0 0 10px rgba(155,120,255,.35);} to { box-shadow: 0 0 22px rgba(155,120,255,.65);} }
 
 /* ====== RESPONSIVE ====== */
 @media (max-width: 420px) {
-  .wrap {
-    width: 90%;
-    padding: 30px 25px;
-  }
-  .wrap h1 { font-size: 1.7rem; }
-  input, select, button { font-size: 0.9rem; }
+  .wrap { width: 90%; padding: 35px 25px; }
 }

@@ -9,15 +9,14 @@ export class FileUploadService {
 
   constructor(private http: HttpClient) {}
 
-  uploadFile(file: File): Observable<HttpEvent<any>> {
-    const formData = new FormData();
-    formData.append('file', file);
+  uploadFile(file: File, domain: string): Observable<HttpEvent<any>> {
+    const form = new FormData();
+    form.append('file', file, file.name);
+    form.append('domain', domain); // backend-ul tău citește @RequestParam("domain")
 
-    const req = new HttpRequest('POST', this.apiUrl, formData, {
-      reportProgress: true,
-      responseType: 'text'
+    const req = new HttpRequest('POST', this.apiUrl, form, {
+      reportProgress: true
     });
-
     return this.http.request(req);
   }
 }

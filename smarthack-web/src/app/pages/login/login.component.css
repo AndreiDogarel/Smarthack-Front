@@ -264,3 +264,52 @@ a:hover {
 #log {
   font-size: 250%;
 }
+/* ====== SHAPES DECORATIVE SUS + JOS (ADĂUGATE) ====== */
+.background-shapes {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+  z-index: 0; /* sub card */
+}
+
+.top-shapes {
+  top: 0;
+  padding-top: 40px;
+}
+
+.bottom-shapes {
+  bottom: 0;
+  padding-bottom: 40px;
+}
+
+.background-shapes div {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(230, 220, 255, 0.35);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 25px rgba(80, 20, 160, 0.4);
+  animation: floatShapes 8s infinite ease-in-out;
+  opacity: 0.85;
+}
+
+.background-shapes div:nth-child(2) { width: 80px; height: 80px; animation-delay: 1s; }
+.background-shapes div:nth-child(3) { width: 45px; height: 45px; animation-delay: 2s; }
+.background-shapes div:nth-child(4) { width: 95px; height: 95px; animation-delay: 3s; }
+.background-shapes div:nth-child(5) { width: 55px; height: 55px; animation-delay: 4s; }
+
+@keyframes floatShapes {
+  0%   { transform: translateY(0px) scale(1); }
+  50%  { transform: translateY(-22px) scale(1.05); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+/* Asigurăm că wrap rămâne peste forme */
+.wrap {
+  z-index: 2 !important;
+  position: relative;
+}

@@ -1,3 +1,8 @@
+<div class="background-shapes top-shapes">
+  <div></div><div></div><div></div><div></div><div></div>
+</div>
+
+<!-- STUDENT -->
 <div class="home-wrap" *ngIf="isStudent()">
   <h1>Bun venit în aplicație!</h1>
 
@@ -9,11 +14,11 @@
     <button (click)="goToQuiz()">🎯 Începe un Quiz</button>
     <button (click)="logout()">🚪 Logout</button>
   </div>
- <a (click)="openAbout()" style="cursor:pointer;">Află mai multe despre aplicație</a>
 
-
+  <a (click)="openAbout()" style="cursor:pointer;">Află mai multe despre aplicație</a>
 </div>
 
+<!-- PROFESOR -->
 <div class="home-wrap" *ngIf="isProfessor()">
   <h1>Bun venit în aplicație!</h1>
 
@@ -29,3 +34,8 @@
 
   <a (click)="openAbout()" routerLink="/about">Află mai multe despre aplicație</a>
 </div>
+
+<div class="background-shapes bottom-shapes">
+  <div></div><div></div><div></div><div></div><div></div>
+</div>
+
