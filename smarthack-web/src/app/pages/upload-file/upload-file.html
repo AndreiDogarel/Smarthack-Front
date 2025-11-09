@@ -1,0 +1,15 @@
+<div class="upload-container">
+    <h2>📁 Încarcă un fișier</h2>
+  
+    <input type="file" (change)="onFileSelected($event)" />
+    
+    <button (click)="onUpload()" [disabled]="!selectedFile">🚀 Încarcă</button>
+  
+    <div *ngIf="uploadProgress > 0">
+      <p>Progres: {{ uploadProgress }}%</p>
+      <progress [value]="uploadProgress" max="100"></progress>
+    </div>
+  
+    <p class="message">{{ message }}</p>
+  </div>
+  

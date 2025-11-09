@@ -3,6 +3,7 @@ import { canActivateAuth } from './core/auth.guard';
 import { canMatchPublic } from './core/public.guard';
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { ProfesorQuiz } from './pages/profesor-quiz/profesor-quiz';
+import { FileUploadComponent } from './pages/upload-file/upload-file';
 
 export const appRoutes: Routes = [
   { path: '', loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent), canActivate: [canActivateAuth] },
@@ -10,6 +11,7 @@ export const appRoutes: Routes = [
   { path: 'register', loadComponent: () => import('./pages/register/register.component').then(m => m.RegisterComponent), canMatch: [canMatchPublic] },
   { path: 'quiz', component: QuizComponent },
   {path: 'professor-dashboard', component: ProfesorQuiz},
+  {path: 'upload-file', component: FileUploadComponent},
   { path: 'about_app',  loadComponent: () => import('./pages/about_app/about.component').then(m => m.AboutComponent)},
   { path: '**', redirectTo: '' },
 ];

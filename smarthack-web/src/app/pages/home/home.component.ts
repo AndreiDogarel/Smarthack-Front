@@ -43,6 +43,10 @@ export class HomeComponent {
     if (isPlatformBrowser(this.pid)) location.href = '/login';
   }
 
+  goToMaterials() {
+    this.router.navigate(['/upload-file']);
+  }
+
   goToQuiz() {
     if (this.isProfessor()) {
       this.router.navigate(['/professor-dashboard']);
