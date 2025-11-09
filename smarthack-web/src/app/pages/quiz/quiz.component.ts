@@ -63,6 +63,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { QuestionService, QuestionDto } from '../../core/question.service';
+import { HintService } from '../../core/hint.service';
 
 @Component({
   selector: 'app-quiz',
@@ -72,6 +73,7 @@ import { QuestionService, QuestionDto } from '../../core/question.service';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent {
+  askDodoInput: string = '';
   private router = inject(Router);
   userInput: string = '';
   variantaA: string = '';
@@ -79,11 +81,12 @@ export class QuizComponent {
   variantaC: string = '';
   variantaD: string = '';
   variantaCorecta: string = '';
-  constructor(private questionService: QuestionService) {}
+  constructor(private questionService: QuestionService, private hintService: HintService) {}
 
   // 🔹 Domenii disponibile
   domains: string[] = ['Matematică', 'Istorie', 'Geografie', 'Biologie', 'Literatură'];
   selectedDomain: string = '';
+  questionText: string = '';
 
   // 🔹 Stări interne
   questions: QuestionDto[] = [];
@@ -133,6 +136,31 @@ export class QuizComponent {
         console.error('Eroare la încărcarea întrebărilor:', err);
         alert('A apărut o eroare la încărcarea întrebărilor.');
         this.loading = false;
+      }
+    });
+  }
+
+  // loading = false;
+  response: any = null;
+  error: string | null = null;
+  
+  getHint() {
+    if (!this.questionText.trim()) {
+      alert('Te rog scrie o întrebare!');
+      return;
+    }
+
+    this.loading = true; // 🔹 afișăm overlay-ul
+
+    this.hintService.getHint(this.questionText).subscribe({
+      next: (res) => {
+        this.loading = false; // 🔹 ascundem overlay-ul
+        alert(`💡 Răspuns:\n${res.answer}`); // 🔹 popup nativ macOS
+      },
+      error: (err) => {
+        console.error(err);
+        this.loading = false;
+        alert('❌ A apărut o eroare la generarea răspunsului.');
       }
     });
   }

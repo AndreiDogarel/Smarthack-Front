@@ -7,13 +7,31 @@
         {{ domain }}
       </option>
     </select>
+    
 
     <button (click)="loadQuestions()">Încarcă întrebările</button>
   </div>
+  <div class="hint-container">
+    <label for="questionText">Întrebare:</label>
+    <input id="questionText" [(ngModel)]="questionText" placeholder="Scrie o întrebare..." />
+    <button (click)="getHint()">Trimite</button>
+  
+    <!-- Overlay simplu de loading -->
+    <!-- <div class="loading-overlay" *ngIf="loading">
+      <div class="spinner"></div>
+      <p>Se încarcă răspunsul...</p>
+    </div>
+  </div> -->
+  
 
   <!-- Mesaj de încărcare -->
   <div *ngIf="loading" class="loading">
     <p>Se încarcă întrebarea<span class="dots"></span></p>
+  </div>
+
+  <div *ngIf="response && !loading && questionText != ''">
+    <h3>Răspuns:</h3>
+    <label>{{ response?.answer }}</label>
   </div>
   
 

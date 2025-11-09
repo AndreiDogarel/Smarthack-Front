@@ -1,17 +1,3 @@
-<!-- 
-<div class="wrap">
-  <h1>Dashboard</h1>
-
-
-  <div *ngIf="isStudent()">
-    <div class="ribbon">
-      <button class="ribbon-btn" (click)="goToQuiz()">🎯 Take Quiz</button>
-    </div>
-
-    <p>Bun venit, {{loggeninUser?.username}} ({{loggeninUser?.role}})</p>
-    <button (click)="logout()">Logout</button>
-  </div>
-</div> -->
 <div class="home-wrap" *ngIf="isStudent()">
   <h1>Bun venit în aplicație!</h1>
 
@@ -41,5 +27,5 @@
     <button (click)="logout()">🚪 Logout</button>
   </div>
 
-  <a routerLink="/about">Află mai multe despre aplicație</a>
+  <a (click)="openAbout()" routerLink="/about">Află mai multe despre aplicație</a>
 </div>
