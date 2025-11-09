@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpEventType } from '@angular/common/http';
 import { FileUploadService } from '../../core/file-upload.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-file-upload',
@@ -11,6 +12,7 @@ import { FileUploadService } from '../../core/file-upload.service';
   styleUrls: ['./upload-file.css']
 })
 export class FileUploadComponent {
+  private router = inject(Router);
   selectedFile: File | null = null;
   uploadProgress: number = 0;
   message: string = '';
@@ -44,5 +46,8 @@ export class FileUploadComponent {
         this.uploadProgress = 0;
       }
     });
+  }
+  goHome() {
+    this.router.navigate(['/']); // navighează către Home
   }
 }
