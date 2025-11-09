@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { QuestionService, QuestionDto, QuestionDtoAdd } from '../../core/question.service';
@@ -11,7 +11,7 @@ import { QuestionService, QuestionDto, QuestionDtoAdd } from '../../core/questio
   styleUrls: ['./profesor-quiz.css']
 })
 export class ProfesorQuiz {
-
+  private router = inject(Router);
   userInput: string = '';
   variantaA: string = '';
   variantaB: string = '';
@@ -116,6 +116,9 @@ export class ProfesorQuiz {
   }
   isStudent(): boolean {
     return false;
+  }
+  goHome() {
+    this.router.navigate(['/']); // navighează către Home
   }
 }
 
