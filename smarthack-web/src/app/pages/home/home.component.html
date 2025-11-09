@@ -1,17 +1,8 @@
-<!-- 
-<div class="wrap">
-  <h1>Dashboard</h1>
+<div class="background-shapes top-shapes">
+  <div></div><div></div><div></div><div></div><div></div>
+</div>
 
-
-  <div *ngIf="isStudent()">
-    <div class="ribbon">
-      <button class="ribbon-btn" (click)="goToQuiz()">🎯 Take Quiz</button>
-    </div>
-
-    <p>Bun venit, {{loggeninUser?.username}} ({{loggeninUser?.role}})</p>
-    <button (click)="logout()">Logout</button>
-  </div>
-</div> -->
+<!-- STUDENT -->
 <div class="home-wrap" *ngIf="isStudent()">
   <h1>Bun venit în aplicație!</h1>
 
@@ -23,11 +14,11 @@
     <button (click)="goToQuiz()">🎯 Începe un Quiz</button>
     <button (click)="logout()">🚪 Logout</button>
   </div>
- <a (click)="openAbout()" style="cursor:pointer;">Află mai multe despre aplicație</a>
 
-
+  <a (click)="openAbout()" style="cursor:pointer;">Află mai multe despre aplicație</a>
 </div>
 
+<!-- PROFESOR -->
 <div class="home-wrap" *ngIf="isProfessor()">
   <h1>Bun venit în aplicație!</h1>
 
@@ -42,4 +33,8 @@
   </div>
 
   <a routerLink="/about">Află mai multe despre aplicație</a>
+</div>
+
+<div class="background-shapes bottom-shapes">
+  <div></div><div></div><div></div><div></div><div></div>
 </div>

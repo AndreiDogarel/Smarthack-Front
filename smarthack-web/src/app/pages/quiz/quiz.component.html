@@ -1,4 +1,10 @@
+<!-- BLOCURILE SUS -->
+<div class="background-shapes top-shapes">
+  <div></div><div></div><div></div><div></div><div></div>
+</div>
+
 <div class="quiz-wrapper">
+
   <div class="domain-select">
     <label for="domain">Alege domeniul:</label>
     <select id="domain" [(ngModel)]="selectedDomain">
@@ -15,13 +21,9 @@
   <div *ngIf="loading" class="loading">
     <p>Se încarcă întrebarea<span class="dots"></span></p>
   </div>
-  
 
-  <!-- Container întrebare -->
-  <div
-    class="quiz-container fade-in"
-    *ngIf="question && !loading && showQuestion"
-  >
+  <!-- Quiz -->
+  <div class="quiz-container fade-in" *ngIf="question && !loading && showQuestion">
     <h2>{{ question.question }}</h2>
 
     <div class="options">
@@ -35,19 +37,19 @@
       </button>
     </div>
 
-    <!-- Buton verifică răspunsul — dispare după ce se apasă -->
-<button 
-  class="check" 
-  (click)="checkAnswer()" 
-  *ngIf="!result"
->
-  Verifică răspunsul
-</button>
-
+    <button class="check" (click)="checkAnswer()" *ngIf="!result">
+      Verifică răspunsul
+    </button>
 
     <div *ngIf="result" class="result">{{ result }}</div>
 
     <button *ngIf="result" class="next" (click)="nextQuestion()">Următoarea întrebare</button>
   </div>
+
   <button class="back-home" (click)="goHome()">🏠 Înapoi la Home</button>
+</div>
+
+<!-- BLOCURILE JOS -->
+<div class="background-shapes bottom-shapes">
+  <div></div><div></div><div></div><div></div><div></div>
 </div>

@@ -1,51 +1,72 @@
+<!-- BLOCURI SUS -->
+<div class="background-shapes top-shapes">
+  <div></div><div></div><div></div><div></div><div></div>
+</div>
+
 <div class="quiz-wrapper">
-    <div class="domain-select">
-      <label  for="domain">Creează o întrebare:</label>
-      <select id="domain" [(ngModel)]="selectedDomain">
-        <option value="" disabled selected>Selectează un domeniu</option>
-        <option *ngFor="let domain of domains" [value]="domain">
-          {{ domain }}
-        </option>
-      </select>
-      <input
+
+  <div class="domain-select">
+      
+    <label for="domain">Creează o întrebare:</label>
+
+    <select id="domain" [(ngModel)]="selectedDomain">
+      <option value="" disabled selected>Selectează un domeniu</option>
+      <option *ngFor="let domain of domains" [value]="domain">
+        {{ domain }}
+      </option>
+    </select>
+
+    <input
       type="text"
       placeholder="Scrie intrebarea aici..."
       [(ngModel)]="userInput"
       name="userInput"
     />
+
     <input
       type="text"
       placeholder="Scrie varianta A aici..."
       [(ngModel)]="variantaA"
       name="variantA"
     />
+
     <input
       type="text"
       placeholder="Scrie varianta B aici..."
       [(ngModel)]="variantaB"
       name="variantaB"
     />
+
     <input
       type="text"
       placeholder="Scrie varianta C aici..."
       [(ngModel)]="variantaC"
       name="variantaC"
     />
+
     <input
       type="text"
       placeholder="Scrie varianta D aici..."
       [(ngModel)]="variantaD"
       name="variantaD"
     />
+
     <input
       type="text"
       placeholder="Scrie varianta corecta aici..."
       [(ngModel)]="variantaCorecta"
       name="variantaCorecta"
     />
-  
-      <button (click)="loadQuestions()">Încarcă intrebarea</button>
-    </div>
-    <button class="back-home" (click)="goHome()">🏠 Înapoi la Home</button>
+
+    <button (click)="loadQuestions()">Încarcă intrebarea</button>
+
   </div>
-  
+
+  <button class="back-home" (click)="goHome()">🏠 Înapoi la Home</button>
+
+</div>
+
+<!-- BLOCURI JOS -->
+<div class="background-shapes bottom-shapes">
+  <div></div><div></div><div></div><div></div><div></div>
+</div>
