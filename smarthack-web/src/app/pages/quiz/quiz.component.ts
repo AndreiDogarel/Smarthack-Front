@@ -58,9 +58,10 @@
 // }
 
 
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { QuestionService, QuestionDto } from '../../core/question.service';
 
 @Component({
@@ -71,6 +72,7 @@ import { QuestionService, QuestionDto } from '../../core/question.service';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent {
+  private router = inject(Router);
   userInput: string = '';
   variantaA: string = '';
   variantaB: string = '';
@@ -98,6 +100,7 @@ export class QuizComponent {
       alert('Selectează un domeniu!');
       return;
     }
+    
 
     this.loading = true;
     this.showQuestion = false;
@@ -173,6 +176,9 @@ export class QuizComponent {
   }
   isStudent(): boolean {
     return false;
+  }
+  goHome() {
+    this.router.navigate(['/']); // navighează către Home
   }
 }
 
