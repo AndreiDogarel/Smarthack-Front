@@ -1,0 +1,185 @@
+/* ====== RESETARE GLOBALĂ ====== */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ====== FUNDAL STATIC, MOV ÎNCHIS ====== */
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #53209b, #6a2bb8, #7c40d1);
+  overflow: hidden;
+}
+
+/* ====== VIGNETĂ ANIMATĂ ====== */
+:host::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(110, 40, 200, 0.25) 60%,
+    rgba(30, 0, 70, 0.85) 100%
+  );
+  z-index: 0;
+  animation: vignettePulse 12s infinite alternate;
+}
+
+@keyframes vignettePulse {
+  0%, 100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* ====== CARD QUIZ ====== */
+.quiz-wrapper {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 22px;
+  border: 1px solid rgba(210, 190, 255, 0.4);
+  box-shadow:
+    0 12px 30px rgba(60, 20, 120, 0.5),
+    0 0 60px rgba(140, 80, 255, 0.3);
+  backdrop-filter: blur(14px);
+  padding: 40px 35px;
+  width: 400px;
+  color: #333;
+  animation: fadeIn 1.2s ease-in-out forwards;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.quiz-wrapper:hover {
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow:
+    0 14px 36px rgba(70, 30, 140, 0.6),
+    0 0 80px rgba(160, 100, 255, 0.3);
+  border-color: rgba(190, 160, 255, 0.6);
+  transform: translateY(-3px);
+}
+
+/* ====== ANIMAȚII ====== */
+@keyframes fadeIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ====== SELECTOR DE DOMENIU ====== */
+.domain-select {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.domain-select label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4a2d9f;
+  margin-bottom: 5px;
+  font-size: x-large;
+}
+
+/* ====== SELECTURI ====== */
+.domain-select select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #f8f7ff;
+  color: #53209b;
+  font-size: 0.95rem;
+  transition: all 0.3s ease-in-out;
+  outline: none; /* 🔹 fără contur negru */
+}
+
+.domain-select select:focus {
+  border-color: #a88cff;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(168, 140, 255, 0.55);
+  outline: none; /* 🔹 elimină complet borderul implicit */
+}
+
+/* ====== INPUTURI ====== */
+.domain-select input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #f8f7ff;
+  color: #53209b;
+  font-size: 0.95rem;
+  transition: all 0.3s ease-in-out;
+  outline: none; /* 🔹 fără contur negru */
+}
+
+.domain-select input:focus {
+  border-color: #a88cff;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(168, 140, 255, 0.55);
+  outline: none; /* 🔹 elimină complet borderul implicit */
+}
+
+/* ====== BUTON ====== */
+.domain-select button {
+  margin-top: 15px;
+  padding: 11px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #5c25c4, #8a57ff, #b28cff);
+  background-size: 300% 100%;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 4px 14px rgba(90, 60, 200, 0.5);
+  animation: buttonGlow 6s ease-in-out infinite alternate;
+}
+
+.domain-select button:hover {
+  background-position: 100% 0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(110, 70, 230, 0.65);
+}
+
+/* ====== ANIMAȚIE GLOW ====== */
+@keyframes buttonGlow {
+  from {
+    box-shadow: 0 0 10px rgba(155, 120, 255, 0.35);
+  }
+  to {
+    box-shadow: 0 0 22px rgba(155, 120, 255, 0.65);
+  }
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 480px) {
+  .quiz-wrapper {
+    width: 90%;
+    padding: 25px;
+  }
+  .domain-select button {
+    font-size: 0.9rem;
+  }
+  .domain-select input,
+  .domain-select select {
+    font-size: 0.9rem;
+  }
+}
