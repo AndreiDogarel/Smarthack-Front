@@ -1,8 +1,9 @@
-<!-- BLOCURILE SUS -->
+<!-- 🔹 BLOCURILE SUS -->
 <div class="background-shapes top-shapes">
   <div></div><div></div><div></div><div></div><div></div>
 </div>
 
+<!-- 🔸 CONȚINUT PRINCIPAL -->
 <div class="quiz-wrapper">
 
   <div class="domain-select">
@@ -13,68 +14,61 @@
         {{ domain }}
       </option>
     </select>
-    
 
     <button (click)="loadQuestions()">Încarcă întrebările</button>
   </div>
+
   <div class="hint-container">
     <label for="questionText">Întrebare:</label>
     <input id="questionText" [(ngModel)]="questionText" placeholder="Scrie o întrebare..." />
     <button (click)="getHint()">Trimite</button>
-  
-    <!-- Overlay simplu de loading -->
-    <!-- <div class="loading-overlay" *ngIf="loading">
-      <div class="spinner"></div>
-      <p>Se încarcă răspunsul...</p>
-    </div>
-  </div> -->
-  
+  </div>
 
-  <!-- Mesaj de încărcare -->
+  <!-- 🔹 Mesaj de încărcare -->
   <div *ngIf="loading" class="loading">
     <p>Se încarcă întrebarea<span class="dots"></span></p>
   </div>
 
-  <!-- Quiz -->
+  <!-- 🔸 Quiz -->
   <div class="quiz-container fade-in" *ngIf="question && !loading && showQuestion">
 
-  <div *ngIf="response && !loading && questionText != ''">
-    <h3>Răspuns:</h3>
-    <label>{{ response?.answer }}</label>
-  </div>
-  
-
-  <!-- Container întrebare -->
-  <div
-    class="quiz-container fade-in"
-    *ngIf="question && !loading && showQuestion"
-  >
-    <h2>{{ question.question }}</h2>
-
-    <div class="options">
-      <button
-        *ngFor="let option of [question.variantA, question.variantB, question.variantC, question.variantD]"
-        class="option-btn"
-        [ngClass]="{ selected: selectedAnswer === option }"
-        (click)="selectAnswer(option)"
-      >
-        {{ option }}
-      </button>
+    <div *ngIf="response && !loading && questionText != ''">
+      <h3>Răspuns:</h3>
+      <label>{{ response?.answer }}</label>
     </div>
 
-    <button class="check" (click)="checkAnswer()" *ngIf="!result">
-      Verifică răspunsul
-    </button>
+    <!-- 🔹 Container întrebare -->
+    <div
+      class="quiz-container fade-in"
+      *ngIf="question && !loading && showQuestion"
+    >
+      <h2>{{ question.question }}</h2>
 
-    <div *ngIf="result" class="result">{{ result }}</div>
+      <div class="options">
+        <button
+          *ngFor="let option of [question.variantA, question.variantB, question.variantC, question.variantD]"
+          class="option-btn"
+          [ngClass]="{ selected: selectedAnswer === option }"
+          (click)="selectAnswer(option)"
+        >
+          {{ option }}
+        </button>
+      </div>
 
-    <button *ngIf="result" class="next" (click)="nextQuestion()">Următoarea întrebare</button>
+      <button class="check" (click)="checkAnswer()" *ngIf="!result">
+        Verifică răspunsul
+      </button>
+
+      <div *ngIf="result" class="result">{{ result }}</div>
+
+      <button *ngIf="result" class="next" (click)="nextQuestion()">Următoarea întrebare</button>
+    </div>
   </div>
 
   <button class="back-home" (click)="goHome()">🏠 Înapoi la Home</button>
 </div>
 
-<!-- BLOCURILE JOS -->
+<!-- 🔹 BLOCURILE JOS -->
 <div class="background-shapes bottom-shapes">
   <div></div><div></div><div></div><div></div><div></div>
 </div>
